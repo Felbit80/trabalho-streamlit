@@ -1,8 +1,14 @@
 import streamlit as st
 import pandas as pd
-import plotly.express as px
-import plotly.graph_objects as go
 from plotly.subplots import make_subplots
+
+try:
+    import plotly.express as px
+    import plotly.graph_objects as go
+    PLOTLY_AVAILABLE = True
+except ImportError:
+    PLOTLY_AVAILABLE = False
+    st.warning("Plotly não está disponível. Alguns gráficos podem não funcionar.")
 
 # Configuração da página
 st.set_page_config(
